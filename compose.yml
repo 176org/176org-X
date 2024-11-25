@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=Xdb
+    volumes:
+      - postgis-data:/var/lib/postgresql
+    networks:
+      - X-network
+    ports:
+      - "5432:5432"
+
+networks:
+  X-network:
+    driver: bridge
+volumes:
+  postgis-data:
